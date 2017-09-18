@@ -46,7 +46,7 @@ defmodule ComeoninEctoPassword.Mixfile do
   defp deps do
     [
      {:ecto, "~> 2.1"},
-     {:comeonin, "~> 3.0"},
+     {:comeonin, "~> 4.0"},
      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
