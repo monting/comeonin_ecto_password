@@ -4,6 +4,7 @@ defmodule Comeonin.Ecto.Password do
 
   alias Comeonin.Bcrypt
   alias Comeonin.Pbkdf2
+  alias Comeonin.Argon2
   alias Comeonin.Config
 
   @moduledoc """
@@ -60,6 +61,10 @@ defmodule Comeonin.Ecto.Password do
   defp hash_password(Bcrypt, plain_password) do
     salt = Bcrypt.gen_salt(Config.bcrypt_log_rounds)
     Bcrypt.hashpass(plain_password, salt)
+  end
+
+  defp hash_password(Argon2, plain_password) do
+    Argon2.hashpwsalt(plain_password)
   end
 
   def valid?(plain_password, hashed_password) do
